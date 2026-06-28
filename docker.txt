@@ -1,0 +1,22 @@
+sudo usermod -aG docker $USER 
+newgrp docker 
+docker build -t simple-blockchain
+docker run simple-blockchain 
+
+Step 1: Pull the registry Image Manually pull the Docker Registry image from Docker Hub: 
+docker pull registry:2 
+Step 2: Start a Docker Registry Container You can run a local Docker registry by using the official registry image: 
+docker run -d -p 5000:5000 --name registry registry:2 
+
+Step 1: docker ps
+
+Step 2: Tag the Image Assuming your image name is simple-blockchain, tag it like this: 
+docker tag simple-blockchain localhost:5000/simple-blockchain 
+
+Step 3: Push the Image to Your Private Registry Push the tagged image to the private registry:
+docker push localhost:5000/simple-blockchain 
+
+Step 4: Verify the Image is Pushed You can verify that the image is in your registry by checking the registry API: 
+curl http://localhost:5000/v2/simple-blockchain/tags/list
+Step 5: Pull the Image from Your Private Registry On any machine that has access to your private registry, you can pull the image like this: 
+docker pull localhost:5000/simple-blockchain 
