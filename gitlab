@@ -1,0 +1,13 @@
+git config --global user.name "Student Name" 
+git config --global user.email "student@email.com" 
+git config --list 
+
+git commit -m "Initial version of app" 
+git branch feature-login 
+git checkout feature-login
+
+git merge feature-login 
+
+git remote add origin https://github.com/username/git-demo.git 
+git remote -v 
+git push -u origin master 
